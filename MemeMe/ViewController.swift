@@ -31,7 +31,10 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true;
     }
     
     override func viewWillAppear(animated: Bool) {
