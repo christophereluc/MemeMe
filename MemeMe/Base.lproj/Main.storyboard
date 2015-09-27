@@ -27,7 +27,11 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="V4J-qy-eFH"/>
-                                    <barButtonItem title="Cancel" id="rl5-NA-Im7"/>
+                                    <barButtonItem title="Cancel" id="rl5-NA-Im7">
+                                        <connections>
+                                            <action selector="clearTextAndImage:" destination="BYZ-38-t0r" id="G2w-mn-TdP"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qz5-Mr-CmA">
