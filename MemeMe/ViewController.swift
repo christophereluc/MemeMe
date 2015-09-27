@@ -36,15 +36,6 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         return true;
     }
     
-    override func shouldAutorotate() -> Bool {
-        if (bottomText.editing || topText.editing) {
-            return false
-        }
-        else {
-            return super.shouldAutorotate()
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         //Set defaults for top
@@ -146,7 +137,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     
     func keyboardWillShow(notification: NSNotification) {
         if(bottomText.editing){
-            view.frame.origin.y -= getKeyboardHeight(notification)
+            view.frame.origin.y = -getKeyboardHeight(notification)
         }
     }
     
