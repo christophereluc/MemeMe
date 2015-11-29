@@ -10,7 +10,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate,
+class EditorViewController: UIViewController, UIImagePickerControllerDelegate,
 UINavigationControllerDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var imagePickerView: UIImageView!
@@ -77,15 +77,13 @@ UINavigationControllerDelegate, UITextFieldDelegate {
             activity, success, items, error in
             if success {
                 self.save(image)
+                self.dismissViewControllerAnimated(true, completion: nil)
             }
         }
         presentViewController(shareController, animated: true, completion: nil)
     }
     @IBAction func clearTextAndImage(sender: AnyObject) {
-        topText.text = "TOP"
-        bottomText.text = "BOTTOM"
-        imagePickerView.image = nil
-        shareButton.enabled = false
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     /* Image Selection */
@@ -167,6 +165,11 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     
     func save(memeImage: UIImage) {
         newMeme = Meme(topText: topText.text!, bottomText: bottomText.text!, image: imagePickerView.image!, memeImage: memeImage)
+        
+        // Add it to the memes array in the Application Delegate
+        let object = UIApplication.sharedApplication().delegate
+        let appDelegate = object as! AppDelegate
+        appDelegate.memes.append(newMeme)
     }
     
     //Generates a UIImage containing the image and text
